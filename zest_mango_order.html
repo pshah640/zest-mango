@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Zest Mango — Order Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --green:#1a5c2a;--green-light:#2d8a45;--gold:#d4a017;--cream:#fdf8f0;--text:#1a1a1a;--muted:#666;--border:#e0d8c8; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+  .header{background:var(--green);color:white;text-align:center;padding:2rem 1rem 1.5rem;}
+  .header .emoji{font-size:2.5rem;display:block;margin-bottom:0.5rem;}
+  .header h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;}
+  .header p{margin-top:0.4rem;font-size:0.95rem;opacity:0.85;letter-spacing:1px;text-transform:uppercase;}
+  .badge{display:inline-block;margin-top:0.8rem;background:var(--gold);color:#1a1a1a;font-size:0.75rem;font-weight:600;padding:4px 14px;border-radius:20px;}
+  .main{max-width:520px;margin:0 auto;padding:1.5rem 1rem 3rem;}
+  .pricing-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--green);margin-bottom:0.75rem;margin-top:1.5rem;}
+  .pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.5rem;}
+  .price-card{background:white;border:2px solid var(--border);border-radius:12px;padding:1rem 0.75rem;text-align:center;cursor:pointer;transition:all 0.2s;}
+  .price-card:hover{border-color:var(--green-light);}
+  .price-card.selected{border-color:var(--green);background:#f0f9f2;}
+  .price-card .kg{font-size:1.3rem;font-weight:700;color:var(--green);font-family:'Playfair Display',serif;}
+  .price-card .kg span{font-size:0.85rem;}
+  .price-card .price{font-size:1rem;font-weight:600;color:var(--text);margin-top:4px;}
+  .price-card .per{font-size:0.72rem;color:var(--muted);margin-top:2px;}
+  .best-value{background:var(--gold);color:#1a1a1a;font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:4px;}
+  .custom-qty-wrap{display:none;margin-top:10px;}
+  .custom-qty-wrap.show{display:block;}
+  .form-section{margin-bottom:1.2rem;}
+  .form-section label{display:block;font-size:0.85rem;font-weight:600;color:var(--green);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px;}
+  .form-section input,.form-section textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:1rem;background:white;color:var(--text);outline:none;transition:border-color 0.2s;}
+  .form-section input:focus,.form-section textarea:focus{border-color:var(--green-light);}
+  .form-section textarea{resize:vertical;min-height:80px;}
+  .summary{background:white;border:1.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:none;}
+  .summary-row{display:flex;justify-content:space-between;font-size:0.9rem;padding:5px 0;color:var(--muted);}
+  .summary-row.total{border-top:1px solid var(--border);margin-top:8px;padding-top:10px;font-weight:700;font-size:1.05rem;color:var(--green);}
+  .btn-order{width:100%;background:#25D366;color:white;border:none;border-radius:12px;padding:15px;font-size:1.05rem;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;}
+  .btn-order:hover{background:#1ebe5d;}
+  .btn-order:disabled{background:#aaa;cursor:not-allowed;}
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.5rem 0;}
+  .feature{background:white;border:1px solid var(--border);border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;display:flex;align-items:center;gap:8px;}
+  .success-msg{display:none;background:#f0f9f2;border:2px solid var(--green);border-radius:12px;padding:1.5rem;text-align:center;margin-bottom:1rem;}
+  .success-msg.show{display:block;}
+  .success-msg h3{font-family:'Playfair Display',serif;color:var(--green);font-size:1.3rem;margin-bottom:0.5rem;}
+  .success-msg p{font-size:0.9rem;color:var(--muted);}
+  .footer{text-align:center;padding:1.5rem 1rem;background:var(--green);color:rgba(255,255,255,0.8);font-size:0.85rem;}
+  .footer a{color:var(--gold);text-decoration:none;}
+  .footer .contact{margin-top:6px;font-size:0.9rem;color:white;font-weight:500;}
+  hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+</style>
+</head>
+<body>
+<div class="header">
+  <span class="emoji">🥭</span>
+  <h1>The Zest Mango</h1>
+  <p>Farm Fresh · Jumbo Kesar · Organic</p>
+  <span class="badge">✦ Pre-Order Delivery ✦</span>
+</div>
+<div class="main">
+  <div class="features">
+    <div class="feature">🌿 100% Organic</div>
+    <div class="feature">🚜 Direct from Farm</div>
+    <div class="feature">📦 Home Delivery</div>
+    <div class="feature">⭐ Jumbo Kesar</div>
+  </div>
+  <hr>
+  <p class="pricing-title">Choose Your Pack</p>
+  <div class="pricing-grid">
+    <div class="price-card" onclick="selectPack(this,10,1400)">
+      <div class="kg">10<span> kg</span></div>
+      <div class="price">₹1,400</div>
+      <div class="per">₹140/kg</div>
+    </div>
+    <div class="price-card" onclick="selectPack(this,20,2650)">
+      <div class="best-value">BEST VALUE</div>
+      <div class="kg">20<span> kg</span></div>
+      <div class="price">₹2,650</div>
+      <div class="per">₹132.5/kg</div>
+    </div>
+    <div class="price-card" onclick="selectPack(this,'custom',0)">
+      <div class="kg">20+<span> kg</span></div>
+      <div class="price">₹1,300</div>
+      <div class="per">per 10 kg</div>
+    </div>
+  </div>
+  <div class="custom-qty-wrap" id="customQtyWrap">
+    <div class="form-section">
+      <label>Enter Quantity (kg) — minimum 20 kg</label>
+      <input type="number" id="customKg" min="20" step="5" placeholder="e.g. 30" oninput="updateCustomPrice()">
+    </div>
+  </div>
+  <hr>
+  <div class="form-section">
+    <label>Your Name</label>
+    <input type="text" id="custName" placeholder="Full name">
+  </div>
+  <div class="form-section">
+    <label>WhatsApp Number</label>
+    <input type="tel" id="custPhone" placeholder="e.g. 9876543210">
+  </div>
+  <div class="form-section">
+    <label>Delivery Address</label>
+    <textarea id="custAddress" placeholder="Full address with area / city / pincode"></textarea>
+  </div>
+  <div class="summary" id="orderSummary">
+    <div class="summary-row"><span>Pack</span><span id="sumPack">—</span></div>
+    <div class="summary-row"><span>Quantity</span><span id="sumKg">—</span></div>
+    <div class="summary-row total"><span>Total</span><span id="sumTotal">—</span></div>
+  </div>
+  <div class="success-msg" id="successMsg">
+    <h3>🎉 Order Placed!</h3>
+    <p>Your order is confirmed. We'll contact you on WhatsApp shortly!</p>
+  </div>
+  <button class="btn-order" id="orderBtn" onclick="placeOrder()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.112 1.523 5.836L.057 23.75l6.064-1.447A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 01-5.064-1.405l-.361-.214-3.763.897.939-3.66-.235-.373A9.818 9.818 0 012.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+    Order on WhatsApp
+  </button>
+</div>
+<div class="footer">
+  <div>📞 <a href="tel:7567790501">7567790501</a> &nbsp;|&nbsp; 📸 <a href="https://www.instagram.com/thezestmango" target="_blank">@thezestmango</a></div>
+  <div class="contact">The Zest Mango — Farm Fresh Jumbo Kesar</div>
+</div>
+<script>
+const JSONBIN_KEY='$2a$10$wXRouZ7ZAAxdM8OzUwpkju.6EL9APq/Id3ow4X/UEVNb.qQZUdUdO';
+const BIN_ID='ZESTMANGO_BIN_v1';
+let selectedKg=null,selectedPrice=0;
+
+function selectPack(el,kg,price){
+  document.querySelectorAll('.price-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedKg=kg; selectedPrice=price;
+  if(kg==='custom'){
+    document.getElementById('customQtyWrap').classList.add('show');
+    document.getElementById('orderSummary').style.display='none';
+  } else {
+    document.getElementById('customQtyWrap').classList.remove('show');
+    showSummary(kg+' kg','₹'+price.toLocaleString('en-IN'));
+  }
+}
+
+function updateCustomPrice(){
+  const kg=parseInt(document.getElementById('customKg').value);
+  if(!kg||kg<20)return;
+  const total=Math.ceil(kg/10)*1300;
+  selectedKg=kg; selectedPrice=total;
+  showSummary(kg+' kg','₹'+total.toLocaleString('en-IN'));
+}
+
+function showSummary(kg,total){
+  document.getElementById('sumPack').textContent=selectedKg<=10?'10 kg pack':selectedKg<=20?'20 kg pack':'Custom pack';
+  document.getElementById('sumKg').textContent=kg;
+  document.getElementById('sumTotal').textContent=total;
+  document.getElementById('orderSummary').style.display='block';
+}
+
+async function placeOrder(){
+  const name=document.getElementById('custName').value.trim();
+  const phone=document.getElementById('custPhone').value.trim();
+  const address=document.getElementById('custAddress').value.trim();
+  if(!selectedKg){alert('Please select a pack first.');return;}
+  if(!name){alert('Please enter your name.');return;}
+  if(!phone){alert('Please enter your WhatsApp number.');return;}
+  if(!address){alert('Please enter your delivery address.');return;}
+  const btn=document.getElementById('orderBtn');
+  btn.disabled=true; btn.textContent='Placing order...';
+  const order={id:Date.now(),name,phone,address,kg:selectedKg,amount:selectedPrice,status:'New',time:new Date().toLocaleString('en-IN')};
+  await saveOrder(order);
+  const msg=encodeURIComponent('🥭 *New Order — The Zest Mango*\n\n👤 Name: '+name+'\n📱 Phone: '+phone+'\n📦 Quantity: '+selectedKg+' kg\n💰 Amount: ₹'+selectedPrice.toLocaleString('en-IN')+'\n📍 Address: '+address+'\n\nPlease confirm my order. Thank you!');
+  window.open('https://wa.me/917567790501?text='+msg,'_blank');
+  document.getElementById('successMsg').classList.add('show');
+  document.getElementById('successMsg').scrollIntoView({behavior:'smooth'});
+  btn.textContent='✓ Order Sent!';
+}
+
+async function getBinId(){
+  // Try localStorage first (cached)
+  const cached=localStorage.getItem(BIN_ID);
+  if(cached)return cached;
+  // Search existing bins
+  try{
+    const res=await fetch('https://api.jsonbin.io/v3/b?page=1',{headers:{'X-Master-Key':JSONBIN_KEY}});
+    const data=await res.json();
+    if(data.result){
+      const found=data.result.find(b=>b.snippetMeta&&b.snippetMeta.name==='ZestMangoOrders');
+      if(found){localStorage.setItem(BIN_ID,found._id);return found._id;}
+    }
+  }catch(e){}
+  return null;
+}
+
+async function saveOrder(order){
+  try{
+    let binId=await getBinId();
+    if(!binId){
+      const res=await fetch('https://api.jsonbin.io/v3/b',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY,'X-Bin-Name':'ZestMangoOrders','X-Bin-Private':'false'},
+        body:JSON.stringify({orders:[order]})
+      });
+      const data=await res.json();
+      binId=data.metadata.id;
+      localStorage.setItem(BIN_ID,binId);
+    } else {
+      const res=await fetch('https://api.jsonbin.io/v3/b/'+binId+'/latest',{headers:{'X-Master-Key':JSONBIN_KEY}});
+      const data=await res.json();
+      const orders=data.record.orders||[];
+      orders.push(order);
+      await fetch('https://api.jsonbin.io/v3/b/'+binId,{
+        method:'PUT',
+        headers:{'Content-Type':'application/json','X-Master-Key':JSONBIN_KEY},
+        body:JSON.stringify({orders})
+      });
+    }
+  }catch(e){
+    const orders=JSON.parse(localStorage.getItem('zest_orders')||'[]');
+    orders.push(order); localStorage.setItem('zest_orders',JSON.stringify(orders));
+  }
+}
+</script>
+</body>
+</html>
