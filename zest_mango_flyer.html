@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Zest Mango — Jumbo Kesar Mangoes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:#0d3318;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;}
+  .flyer{background:#fdf8f0;max-width:480px;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+  .top{background:#1a5c2a;padding:2.5rem 2rem 2rem;text-align:center;position:relative;}
+  .brand-emoji{font-size:3rem;display:block;margin-bottom:0.5rem;}
+  .brand-name{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:white;line-height:1;letter-spacing:-1px;}
+  .brand-tagline{color:rgba(255,255,255,0.75);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;margin-top:6px;}
+  .organic-badge{display:inline-block;margin-top:1rem;background:#d4a017;color:#1a1a1a;font-size:0.75rem;font-weight:700;padding:5px 16px;border-radius:20px;letter-spacing:0.5px;text-transform:uppercase;}
+  .variety{background:#d4a017;padding:0.7rem 2rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+  .variety span{font-size:0.9rem;font-weight:700;color:#1a1a1a;letter-spacing:0.5px;text-transform:uppercase;}
+  .dot{width:4px;height:4px;background:#1a1a1a;border-radius:50%;opacity:0.4;}
+  .features{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #e8dfc8;}
+  .feature{padding:1rem 1.25rem;display:flex;align-items:center;gap:10px;border-right:1px solid #e8dfc8;border-bottom:1px solid #e8dfc8;}
+  .feature:nth-child(2n){border-right:none;}
+  .feature:nth-last-child(-n+2){border-bottom:none;}
+  .feature .icon{font-size:1.3rem;}
+  .feature .text{font-size:0.83rem;font-weight:500;color:#333;}
+  .pricing-section{padding:1.5rem 1.5rem 0;}
+  .section-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#1a5c2a;font-weight:700;margin-bottom:1rem;text-align:center;}
+  .pricing-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1.5rem;}
+  .price-card{background:white;border:1.5px solid #e8dfc8;border-radius:12px;padding:1rem 0.75rem;text-align:center;position:relative;}
+  .price-card.featured{border-color:#1a5c2a;background:#f0f9f2;}
+  .featured-tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#1a5c2a;color:white;font-size:0.62rem;font-weight:700;padding:2px 10px;border-radius:10px;white-space:nowrap;}
+  .price-card .qty{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#1a5c2a;}
+  .price-card .qty span{font-size:0.85rem;}
+  .price-card .amount{font-size:1.05rem;font-weight:700;color:#1a1a1a;margin-top:5px;}
+  .price-card .per-kg{font-size:0.7rem;color:#888;margin-top:3px;}
+  .cta-section{padding:1.5rem;}
+  .btn-order{display:block;width:100%;background:#1a5c2a;color:white;text-decoration:none;text-align:center;padding:16px;border-radius:12px;font-size:1.05rem;font-weight:700;margin-bottom:10px;}
+  .btn-order:hover{background:#2d8a45;}
+  .btn-whatsapp{display:block;width:100%;background:#25D366;color:white;text-decoration:none;text-align:center;padding:14px;border-radius:12px;font-size:0.95rem;font-weight:600;}
+  .btn-whatsapp:hover{background:#1ebe5d;}
+  .contact-section{background:#1a5c2a;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .contact-section a{color:rgba(255,255,255,0.9);text-decoration:none;font-size:0.88rem;display:flex;align-items:center;gap:6px;}
+  .contact-section a:hover{color:#d4a017;}
+  .ripening{background:#fffbeb;border-top:1px solid #e8dfc8;padding:0.9rem 1.5rem;font-size:0.82rem;color:#666;text-align:center;}
+  .ripening strong{color:#1a5c2a;}
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="top">
+    <span class="brand-emoji">🥭</span>
+    <div class="brand-name">The Zest Mango</div>
+    <div class="brand-tagline">Farm Fresh · Pre-Order Delivery</div>
+    <div class="organic-badge">✦ 100% Organic &amp; Natural ✦</div>
+  </div>
+  <div class="variety">
+    <span>Jumbo Kesar Mango</span><div class="dot"></div>
+    <span>Direct from Farm</span><div class="dot"></div>
+    <span>Valsad, Gujarat</span>
+  </div>
+  <div class="features">
+    <div class="feature"><span class="icon">🌿</span><span class="text">100% Organic<br>No chemicals</span></div>
+    <div class="feature"><span class="icon">🚜</span><span class="text">Farm to Home<br>Direct delivery</span></div>
+    <div class="feature"><span class="icon">🌳</span><span class="text">Naturally grown<br>Traditional farming</span></div>
+    <div class="feature"><span class="icon">📦</span><span class="text">Safe packaging<br>Fresh on arrival</span></div>
+  </div>
+  <div class="pricing-section">
+    <div class="section-title">Choose Your Pack</div>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="qty">10<span> kg</span></div>
+        <div class="amount">₹1,400</div>
+        <div class="per-kg">₹140 / kg</div>
+      </div>
+      <div class="price-card featured">
+        <div class="featured-tag">BEST VALUE</div>
+        <div class="qty">20<span> kg</span></div>
+        <div class="amount">₹2,650</div>
+        <div class="per-kg">₹132.5 / kg</div>
+      </div>
+      <div class="price-card">
+        <div class="qty">20+<span> kg</span></div>
+        <div class="amount">₹1,300</div>
+        <div class="per-kg">per 10 kg</div>
+      </div>
+    </div>
+  </div>
+  <div class="ripening"><strong>Raw green mangoes</strong> — ripen naturally at home in 3–7 days or use fresh</div>
+  <div class="cta-section">
+    <a href="zest_mango_order.html" class="btn-order">🛒 Order Online — Click Here</a>
+    <a href="https://wa.me/917567790501?text=Hi%2C%20I%20want%20to%20order%20Jumbo%20Kesar%20Mangoes!" class="btn-whatsapp">💬 WhatsApp to Order</a>
+  </div>
+  <div class="contact-section">
+    <a href="tel:7567790501">📞 7567790501</a>
+    <a href="https://www.instagram.com/thezestmango" target="_blank">📸 @thezestmango</a>
+    <a href="zest_mango_dashboard.html">🔒 Dashboard</a>
+  </div>
+</div>
+</body>
+</html>
